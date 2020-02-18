@@ -1,0 +1,19 @@
+.button {
+  font-size: var(--font-size-sm);
+  line-height: var(--lh-primary);
+  font-weight: var(--fw-normal);
+  color: var(--color-white);
+
+  background-color: var(--color-primary);
+  border-radius: 3px;
+  vertical-align: middle;
+  width: 10rem;
+  height: 4rem;
+  cursor: pointer;
+  margin-top: 1rem;
+
+  &:disabled {
+    background-color: var(--color-disabled);
+    cursor: default;
+  }
+}

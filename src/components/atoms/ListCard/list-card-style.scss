@@ -1,0 +1,17 @@
+.list-card {
+  width: 40rem;
+  height: 6rem;
+  border: 1px solid var(--color-border);
+
+  margin-bottom: 1rem;
+  padding: var(--padding-sm);
+  list-style-type: none;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
