@@ -10,8 +10,8 @@ let middleware = [thunk]
 
 const getMiddleware = () => {
   if(process.env.NODE_ENV !== 'production') {
-    middleware = applyMiddleware(...middleware, logger);
-    return composeWithDevTools(middleware);
+    const allMiddlewares = applyMiddleware(...middleware, logger);
+    return composeWithDevTools(allMiddlewares);
   }
 
   return applyMiddleware(...middleware)
