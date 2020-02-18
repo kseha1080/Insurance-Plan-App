@@ -6,10 +6,17 @@ import { persistStore } from 'redux-persist';
 
 import { persistedReducer } from './persistConfig';
 
-const middlewares = applyMiddleware(thunk, logger);
+let middleware = [thunk]
 
-const composedMiddleware = composeWithDevTools(middlewares);
+const getMiddleware = () => {
+  if(process.env.NODE_ENV !== 'production') {
+    middleware = applyMiddleware(...middleware, logger);
+    return composeWithDevTools(middleware);
+  }
 
-export const store = createStore(persistedReducer, composedMiddleware);
+  return applyMiddleware(...middleware)
+}
+
+export const store = createStore(persistedReducer, getMiddleware());
 
 export const persistedStore = persistStore(store);

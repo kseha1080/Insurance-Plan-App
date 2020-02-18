@@ -21,6 +21,7 @@ export const createUser = (userData, redirectCallback) => (dispatch) => {
     .then((res) => {
       localStorage.setItem('JWT', res.data.jwt);
       _setAuthToken(res.data.jwt);
+      dispatch({ type: FORMTYPES.LOAD_COMPLETE });
     })
     .then(() => {
       redirectCallback('/recommendations');
@@ -31,8 +32,6 @@ export const createUser = (userData, redirectCallback) => (dispatch) => {
         type: ERRORTYPES.ERROR_MSG,
         payload: errMsg[0],
       });
-    })
-    .finally(() => {
       dispatch({ type: FORMTYPES.LOAD_COMPLETE });
     });
 };
